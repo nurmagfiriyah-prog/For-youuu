@@ -1,0 +1,597 @@
+# For-youuu<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>Happy Birthday Sofia 💙🎂 (From Rona)</title>
+  <style>
+    :root{
+      --bg1:#e7f2ff; --bg2:#d9f0ff; --bg3:#f1fbff;
+      --card: rgba(255,255,255,.78);
+      --card2: rgba(255,255,255,.55);
+      --ink:#142033;
+      --muted:#5a6a86;
+      --blue:#2d7dff;
+      --blue2:#00b2ff;
+      --pink:#ff4fb7;
+      --good:#1fbf75;
+      --warn:#ffb020;
+      --bad:#ff4a4a;
+      --shadow: 0 18px 60px rgba(0,0,0,.14);
+      --r: 22px;
+      --tap: 46px;
+      --font: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:var(--font); color:var(--ink);
+      background:
+        radial-gradient(900px 600px at 10% 10%, #d9ecff, transparent 60%),
+        radial-gradient(900px 700px at 90% 20%, #c9f2ff, transparent 60%),
+        radial-gradient(900px 700px at 50% 95%, #effbff, transparent 60%),
+        linear-gradient(135deg,#ffffff,#eaf6ff);
+      overflow:hidden;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Floating particles */
+    .bubble{
+      position:fixed; width:10px; height:10px; border-radius:999px;
+      background: rgba(45,125,255,.22);
+      box-shadow: 0 0 0 6px rgba(0,178,255,.12);
+      animation: floatUp linear forwards;
+      pointer-events:none;
+      z-index:0;
+    }
+    @keyframes floatUp{
+      from{transform:translateY(30px); opacity:0}
+      10%{opacity:1}
+      to{transform:translateY(-120vh); opacity:0}
+    }
+
+    /* Tap effects */
+    .ripple{
+      position:fixed; width:18px; height:18px; border-radius:999px;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+      background: radial-gradient(circle, rgba(45,125,255,.55), rgba(0,178,255,.18), transparent 70%);
+      animation:ripple 900ms ease-out forwards;
+      z-index:9999;
+      filter: blur(.2px);
+    }
+    @keyframes ripple{
+      0%{opacity:.9; width:10px; height:10px}
+      100%{opacity:0; width:150px; height:150px}
+    }
+    .spark{
+      position:fixed; width:10px; height:10px; border-radius:999px;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 0 0 6px rgba(45,125,255,.18), 0 0 0 12px rgba(0,178,255,.10);
+      animation:spark 650ms ease-out forwards;
+      z-index:9999;
+    }
+    @keyframes spark{
+      0%{opacity:1; transform:translate(-50%,-50%) scale(1)}
+      100%{opacity:0; transform:translate(-50%,-50%) scale(2.3)}
+    }
+
+    /* App container */
+    .app{
+      position:relative;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      padding:14px;
+      gap:12px;
+      z-index:1;
+    }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.55));
+      box-shadow: var(--shadow);
+      border:1px solid rgba(0,0,0,.06);
+      backdrop-filter: blur(10px);
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      min-width:0;
+    }
+    .brand .title{
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size:14px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand .sub{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .btnRow{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    button{
+      min-height:var(--tap);
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.85);
+      color:var(--ink);
+      font-weight:800;
+      cursor:pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,.10);
+      transition: transform .08s ease, filter .12s ease;
+    }
+    button:active{transform:scale(.98)}
+    .primary{
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color:white;
+      border:none;
+    }
+    .danger{
+      background: linear-gradient(135deg, #ff4a4a, #ff8a8a);
+      color:white;
+      border:none;
+    }
+    .ghost{
+      background: rgba(255,255,255,.65);
+    }
+
+    .content{
+      flex:1;
+      display:grid;
+      grid-template-rows: auto 1fr;
+      gap:12px;
+      overflow:hidden;
+    }
+
+    .card{
+      border-radius:var(--r);
+      background: linear-gradient(135deg, var(--card), var(--card2));
+      box-shadow: var(--shadow);
+      border:1px solid rgba(0,0,0,.06);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+
+    .hero{
+      padding:14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .heroLeft{min-width:0}
+    .h1{
+      font-size:18px;
+      font-weight:1000;
+      margin:0;
+      line-height:1.15;
+    }
+    .h2{
+      margin:6px 0 0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.3;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(45,125,255,.12);
+      border:1px solid rgba(45,125,255,.22);
+      font-weight:900;
+      font-size:12px;
+      color: #0f2a62;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+
+    .grid{
+      padding:14px;
+      display:grid;
+      gap:12px;
+      grid-template-columns: 1fr;
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tile{
+      padding:14px;
+      border-radius:18px;
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    .tileTop{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .tileTitle{
+      font-weight:1000;
+      font-size:14px;
+      margin:0;
+    }
+    .tileDesc{
+      margin:6px 0 0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+
+    .progressWrap{
+      display:flex; align-items:center; gap:10px;
+      margin-top:10px;
+    }
+    .bar{
+      flex:1;
+      height:12px;
+      border-radius:999px;
+      background: rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      transition: width .25s ease;
+    }
+    .tiny{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800;
+    }
+
+    .row{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .row button{flex:1; min-width:140px}
+
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(10,14,22,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:9998;
+    }
+    .modal{
+      width:min(560px, 100%);
+      border-radius:24px;
+      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.68));
+      border:1px solid rgba(255,255,255,.45);
+      box-shadow: 0 22px 80px rgba(0,0,0,.28);
+      backdrop-filter: blur(16px);
+      overflow:hidden;
+    }
+    .modalHead{
+      padding:14px 14px 0;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .modalTitle{
+      font-size:16px; font-weight:1000; margin:0;
+    }
+    .modalBody{
+      padding:12px 14px 14px;
+      color:var(--ink);
+      font-size:14px;
+      line-height:1.45;
+    }
+    .modalBody p{margin:10px 0}
+    .modalFoot{
+      padding:0 14px 14px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .modalFoot button{flex:1; min-width:150px}
+
+    /* Mini game zones */
+    .gameBox{
+      margin-top:10px;
+      padding:12px;
+      border-radius:18px;
+      background: rgba(231,242,255,.7);
+      border:1px dashed rgba(45,125,255,.35);
+    }
+
+    .tapCake{
+      display:flex; align-items:center; justify-content:center;
+      padding:18px 10px;
+      border-radius:18px;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(0,0,0,.06);
+      font-size:44px;
+      cursor:pointer;
+    }
+
+    .choices{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .pill{
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.85);
+      border:1px solid rgba(0,0,0,.06);
+      cursor:pointer;
+      font-weight:900;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    .pill:active{transform:scale(.99)}
+
+    .inputRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    input{
+      flex:1;
+      min-height:var(--tap);
+      border-radius:16px;
+      border:1px solid rgba(0,0,0,.12);
+      padding:10px 12px;
+      font-weight:800;
+      outline:none;
+      background: rgba(255,255,255,.9);
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:16px;
+      transform:translateX(-50%);
+      background: rgba(20,32,51,.92);
+      color:white;
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index:9999;
+    }
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(-4px)}
+
+    .footerHint{
+      text-align:center;
+      color:rgba(20,32,51,.55);
+      font-size:12px;
+      font-weight:800;
+      padding:6px 0 0;
+    }
+
+    /* confetti canvas */
+    canvas#fx{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:2;
+    }
+
+    /* small screen tweaks */
+    @media (min-width: 720px){
+      .grid{grid-template-columns: 1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fx"></canvas>
+
+  <div class="app">
+    <div class="topbar card">
+      <div class="brand">
+        <div class="title" id="topTitle">Happy Birthday Quest 💙</div>
+        <div class="sub" id="topSub">Sofia • 1 February • From Rona 🇮🇩</div>
+      </div>
+      <div class="btnRow">
+        <button class="ghost" id="btnLang">EN</button>
+        <button class="ghost" id="btnSound">🔊</button>
+        <button class="danger" id="btnReset">Reset</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="card hero">
+        <div class="heroLeft">
+          <h1 class="h1" id="heroTitle">Sofia’s Birthday Adventure 🎂💙</h1>
+          <p class="h2" id="heroDesc">
+            Tap everything. Click suspicious buttons. Collect surprises. This is your birthday game! 😼✨
+          </p>
+          <div class="badge" id="badge">
+            🎉 Level: <span id="level">1</span> • ⭐ Stars: <span id="stars">0</span> • 🎁 Gifts: <span id="gifts">0</span>
+          </div>
+          <div class="progressWrap">
+            <div class="bar"><div class="fill" id="fill"></div></div>
+            <div class="tiny" id="progressText">0% completed</div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="primary" id="btnStart">Start the Surprise!</button>
+          <button id="btnSecret">Secret?</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="grid" id="grid"></div>
+        <div class="footerHint" id="hint">Hint: Sofia… try tapping the cake 17 times 👀</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modalBack" id="modalBack">
+    <div class="modal">
+      <div class="modalHead">
+        <h3 class="modalTitle" id="modalTitle">Surprise!</h3>
+        <button class="ghost" id="btnClose">✖</button>
+      </div>
+      <div class="modalBody" id="modalBody"></div>
+      <div class="modalFoot" id="modalFoot"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Saved!</div>
+
+<script>
+/* =========================
+   Sofia Birthday Game 💙
+   From Rona 🇮🇩
+   EN / UA toggle
+   Many mini-games + surprises
+   ========================= */
+
+const $ = (q)=>document.querySelector(q);
+const grid = $("#grid");
+const modalBack = $("#modalBack");
+const modalTitle = $("#modalTitle");
+const modalBody = $("#modalBody");
+const modalFoot = $("#modalFoot");
+const toastEl = $("#toast");
+
+let lang = localStorage.getItem("sofia_lang") || "EN";
+let soundOn = (localStorage.getItem("sofia_sound") ?? "1") === "1";
+
+let state = JSON.parse(localStorage.getItem("sofia_state") || "null") || {
+  stars: 0,
+  gifts: 0,
+  level: 1,
+  completed: {},
+  cakeTaps: 0,
+  secretUnlocked: false,
+  secretRoom: false,
+  lastGift: "",
+};
+
+function save(){
+  localStorage.setItem("sofia_state", JSON.stringify(state));
+  localStorage.setItem("sofia_lang", lang);
+  localStorage.setItem("sofia_sound", soundOn ? "1" : "0");
+  showToast(t("Saved!","Збережено!"));
+  renderTop();
+}
+
+function resetAll(){
+  if(!confirm(t("Reset everything? Sofia will lose stars 😭","Скинути все? Софія втратить зірки 😭"))) return;
+  localStorage.removeItem("sofia_state");
+  state = {
+    stars: 0,
+    gifts: 0,
+    level: 1,
+    completed: {},
+    cakeTaps: 0,
+    secretUnlocked: false,
+    secretRoom: false,
+    lastGift: "",
+  };
+  confettiBurst(220);
+  renderAll();
+  save();
+}
+
+function t(en, ua){ return lang==="EN" ? en : ua; }
+
+function showToast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  setTimeout(()=>toastEl.classList.remove("show"), 900);
+}
+
+/* =========================
+   Sound (tiny beep)
+   ========================= */
+let audioCtx = null;
+function beep(freq=440, dur=0.06){
+  if(!soundOn) return;
+  try{
+    audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.frequency.value = freq;
+    o.type = "sine";
+    g.gain.value = 0.06;
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start();
+    o.stop(audioCtx.currentTime + dur);
+  }catch(e){}
+}
+
+/* =========================
+   Tap effects
+   ========================= */
+function ripple(x,y){
+  const r = document.createElement("div");
+  r.className="ripple";
+  r.style.left=x+"px";
+  r.style.top=y+"px";
+  document.body.appendChild(r);
+  setTimeout(()=>r.remove(), 950);
+
+  const s = document.createElement("div");
+  s.className="spark";
+  s.style.left=x+"px";
+  s.style.top=y+"px";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(), 700);
+}
+
+window.addEventListener("pointerdown", (e)=>{
+  ripple(e.clientX, e.clientY);
+});
+
+/* =========================
+   Floating bubbles
+   ========================= */
+function spawnBubble(){
+  const b = document.createElement("div");
+  b.className="bubble";
+  const size = 6 + Math.random()*16;
+  b.style.width=size+"px";
+  b.style.height=size+"px";
+  b.style.left=(Math.random()*100)+"vw";
+  b.style.bottom="-20px";
+  const dur = 6 + Math.random()*7;
+  b.style.animationDuration = dur+"s";
+  b.style.opacity = 0.2 + Math.random()*0.55;
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(), (dur*1000)+200);
+}
+setInterval(spawnBubble, 380);
+
+/* =========================
+   Confetti FX
+   ========================= */
+const fx = $("#fx");
+const ctx = fx.getContext("2d");
+let W=0,H=0;
+function resize(){
+  W = fx.width = window.innerWidth * devicePixelRatio;
+  H = fx.height = window.innerHeight * devicePixelRatio;
+}
+window.addEventListener("resize", resize);
+resize();
+
+let confetti = [];
+function confettiBurst(n=140){
+  for(let i=0;i<n;i++){
+    confetti.push({
+      x: Math.random()*W,
+      y:
